@@ -3,8 +3,6 @@
 
 ---
 
-## MỞ BÀI
-
 ### 1. Lý do chọn đề tài
 Trong thời đại hiện nay, các bài toán về tìm đường đi trong môi trường phức tạp không chỉ ứng dụng trong game mà còn liên quan đến robot, logistics, và trí tuệ nhân tạo. Trò chơi mê cung là một mô hình đơn giản nhưng rất gần gũi để mô phỏng các bài toán đó. Việc sử dụng thuật toán A* – một thuật toán tìm kiếm có heuristic – giúp tối ưu hóa quá trình tìm đường, từ đó nâng cao hiệu suất và tính thông minh của hệ thống.
 
@@ -16,7 +14,6 @@ Trong thời đại hiện nay, các bài toán về tìm đường đi trong m�
 
 ---
 
-## THÂN BÀI
 
 ### 3. Tổng quan hệ thống
 
@@ -111,14 +108,13 @@ f(n) = g(n) + h(n)
 
 ---
 
-## KẾT LUẬN
 
 ### 8. Đánh giá kết quả đạt được
 
-- ✅ Đã triển khai đầy đủ thuật toán A*.
-- ✅ Giao diện đẹp, có thể chạy thực tế trên trình duyệt.
-- ✅ Tương tác tốt với người dùng.
-- ✅ Hỗ trợ tự động giải và mô phỏng đường đi rõ ràng.
+-  Đã triển khai đầy đủ thuật toán A*.
+-  Giao diện đẹp, có thể chạy thực tế trên trình duyệt.
+-  Tương tác tốt với người dùng.
+-  Hỗ trợ tự động giải và mô phỏng đường đi rõ ràng.
 
 ### 9. Hạn chế
 
@@ -128,11 +124,11 @@ f(n) = g(n) + h(n)
 
 ### 10. Hướng phát triển
 
-- ✅ Hỗ trợ chi phí khác nhau cho mỗi ô.
-- ✅ Hỗ trợ mê cung động.
-- ✅ So sánh heuristic khác nhau trong thời gian thực.
-- ✅ Tạo trình thiết kế mê cung trực quan.
-- ✅ Ứng dụng cho mô hình robot thật.
+-  Hỗ trợ chi phí khác nhau cho mỗi ô.
+-  Hỗ trợ mê cung động.
+-  So sánh heuristic khác nhau trong thời gian thực.
+-  Tạo trình thiết kế mê cung trực quan.
+-  Ứng dụng cho mô hình robot thật.
 
 ---
 
