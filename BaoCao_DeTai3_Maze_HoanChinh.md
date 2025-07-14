@@ -1,146 +1,136 @@
+Đề tài: Tìm Đường Thoát Thông Minh Trong Trò Chơi Mê Cung
 
-# BÁO CÁO ĐỀ TÀI: TÌM ĐƯỜNG THOÁT THÔNG MINH TRONG TRÒ CHƠI MÊ CUNG
+1. Lý do chọn đề tài
 
----
+Trong lĩnh vực trí tuệ nhân tạo và lập trình thuật toán, bài toán tìm đường trong mê cung là một trong những bài toán cơ bản nhưng vô cùng quan trọng. Không chỉ có ý nghĩa trong game, nó còn mang tính ứng dụng cao trong robot di động, dẫn đường tự động, và hệ thống bản đồ.
 
-## MỞ BÀI
+Việc mô phỏng trò chơi mê cung giúc người học tiếp cận gần hơn với các thuật toán tìm kiếm như BFS, DFS, Dijkstra và đặc biệt là A*, đồng thời áp dụng được tư duy tối ưu hóa, trực quan hóa bằng đồ họa với HTML5 và Canvas.
 
-### 1. Lý do chọn đề tài
-Trong thời đại hiện nay, các bài toán về tìm đường đi trong môi trường phức tạp không chỉ ứng dụng trong game mà còn liên quan đến robot, logistics, và trí tuệ nhân tạo. Trò chơi mê cung là một mô hình đơn giản nhưng rất gần gũi để mô phỏng các bài toán đó. Việc sử dụng thuật toán A* – một thuật toán tìm kiếm có heuristic – giúp tối ưu hóa quá trình tìm đường, từ đó nâng cao hiệu suất và tính thông minh của hệ thống.
+2. Mục tiêu của đề tài
 
-### 2. Mục tiêu đề tài
-- Xây dựng hệ thống mê cung tương tác trực quan bằng HTML5/JavaScript.
-- Áp dụng thuật toán A* để tìm đường đi ngắn nhất từ điểm bắt đầu (S) đến điểm kết thúc (G).
-- Hiển thị đường đi tối ưu và hỗ trợ điều khiển nhân vật thủ công hoặc tự động.
-- Phát triển một hệ thống mở có thể mở rộng thêm trong tương lai.
+Xây dựng hệ thống sinh mê cung ngẫu nhiên sử dụng thuật toán Kruskal.
 
----
+Tìm đường đi ngắn nhất từ điểm bắt đầu đến điểm kết thúc bằng thuật toán A*.
 
-## THÂN BÀI
+Hiển thị đường đi tối ơu lên giao diện đồ họa Canvas.
 
-### 3. Tổng quan hệ thống
+Cho phép người chơi tương tác, điều khiển, thu thập vật phẩm.
 
-#### 3.1 Ngôn ngữ và công nghệ sử dụng
-- HTML5: Dùng để tạo khung và canvas.
-- CSS3: Dùng để thiết kế giao diện người dùng thân thiện.
-- JavaScript (thuần): Xử lý logic game, sinh mê cung, thuật toán tìm đường, sự kiện người dùng.
-- Canvas API: Vẽ mê cung, nhân vật, đường đi.
+Cung cấp tính năng tự động giải mê cung và phân tích bước đi.
 
-#### 3.2 Cấu trúc hệ thống
-- `index.js`: Gồm toàn bộ logic của game và các thuật toán.
-- `style.css`: Định dạng giao diện, màu sắc, bố cục.
-- `canvas`: Khu vực tương tác chính, nơi vẽ mê cung và xử lý tương tác.
+3. Tổng quan kiến trúc chương trình
 
----
+3.1 Các thành phần chính
 
-### 4. Phân tích chức năng chi tiết
+maze: lớp đối tượng xử lý sinh mê cung.
 
-#### 4.1 Khởi tạo mê cung
-- Thuật toán sinh mê cung sử dụng Kruskal kết hợp Union-Find để đảm bảo toàn bộ mê cung là một đồ thị liên thông.
-- Mỗi ô trong mê cung là một đỉnh, các tường là cạnh.
-- Các bước:
-  1. Khởi tạo từng ô là một tập riêng biệt.
-  2. Tạo danh sách các tường giữa các ô liền kề.
-  3. Trộn ngẫu nhiên danh sách cạnh.
-  4. Duyệt danh sách, nối những ô chưa cùng tập hợp.
+astar: thuật toán tìm đường.
 
-#### 4.2 Giao diện và điều khiển
-- Canvas sẽ vẽ các đối tượng:
-  - Tường: màu xanh đậm
-  - Đường đi: trắng
-  - Vật phẩm: tím
-  - Người chơi: đỏ
-  - Start: xanh lá
-  - Goal: vàng
-- Người chơi điều khiển bằng phím: `↑ ↓ ← →` hoặc `W A S D`.
+draw_canvas: vẽ mê cung lên HTML5 canvas.
 
-#### 4.3 Thêm vật phẩm ngẫu nhiên
-- Tại mỗi mê cung được tạo ra, sẽ có các vật phẩm được đặt tại các ô trống ngẫu nhiên.
-- Người chơi cần **thu thập hết** vật phẩm mới được đi tới đích.
+autoMovePlayer: điều hướng tự động theo đường đi tìm được.
 
----
+Giao diện được thiết kế bằng HTML, CSS, JavaScript thuần.
 
-### 5. Thuật toán A* (A-Star)
+3.2 Cấu trúc giao diện
 
-#### 5.1 Giới thiệu A*
-- A* là thuật toán tìm kiếm sử dụng hàm heuristic để ước lượng chi phí từ điểm hiện tại đến đích.
-- Nó đảm bảo tìm được đường đi ngắn nhất (trong môi trường không có trọng số âm).
+Canvas dùng để hiển thị mê cung và các đối tượng như tường, đường đi, vật phẩm, người chơi.
 
-#### 5.2 Công thức:
-```
+Các nút chọn cấp độ, nút bắt đầu và giải mê cung.
+
+Thông tin vật phẩm, thời gian và số bước hiển thị rõ ràng.
+
+4. Thuật toán sinh mê cung: Kruskal + Union-Find
+
+4.1 Mô tả
+
+Mỗi ô là một node, các bức tường giữa hai ô liền kề là các cạnh.
+
+Dùng Union-Find để nối các vùng không liên thông.
+
+Chỉ phá tường nếu hai ô chưa cùng tập hợp → đảm bảo không tạo chu trình.
+
+4.2 Các bước thực hiện
+
+Gán mỗi ô là một tập riêng.
+
+Sinh danh sách các cạnh (tường).
+
+Trộn ngẫu nhiên danh sách cạnh.
+
+Với mỗi cạnh:
+
+Nếu hai ô chưa cùng tập → phá tường nối hai ô lại, thực hiện union.
+
+Kết thúc khi toàn bộ ô đã nối thành một mê cung liên thông.
+
+5. Thuật toán tìm đường A* (A-Star)
+
+5.1 Khái niệm
+
+A* là thuật toán tìm đường ngắn nhất sử dụng hàm heuristic để ước lượng chi phí còn lại. Đây là thuật toán rất hiệu quả vì kết hợp được giữa tìm kiếm theo chi phí (g) và dự đoán (h).
+
+5.2 Công thức
+
 f(n) = g(n) + h(n)
-```
-- `g(n)`: Chi phí thực từ start đến `n`
-- `h(n)`: Ước lượng chi phí từ `n` đến goal
 
-#### 5.3 Hàm heuristic sử dụng
-- **Manhattan**: Ưu tiên cho lưới ô vuông
-- **Euclidean**: Mô phỏng đường thẳng thực tế
+Trong đó:
 
-#### 5.4 Triển khai trong chương trình
-- `astar()`: Hàm chính cài đặt thuật toán A*.
-- `solveMaze()`: Gọi hàm `astar()`, vẽ lại mê cung và hiển thị đường đi.
-- `autoMovePlayer()`: Sau khi có đường đi, hệ thống sẽ tự động điều hướng người chơi.
+g(n): chi phí từ điểm bắt đầu đến điểm hiện tại.
 
----
+h(n): chi phí ước lượng từ điểm hiện tại đến đích.
 
-### 6. Giao diện người dùng
+5.3 Hàm heuristic
 
-#### 6.1 Tổng quan
-- Tạo cảm giác hiện đại, trẻ trung bằng gradient màu sắc và hiệu ứng CSS.
-- Dễ thao tác và điều hướng.
+Manhattan: abs(x1 - x2) + abs(y1 - y2)
 
-#### 6.2 Các thành phần chính
-- Combo box chọn cấp độ (5x5, 10x10, 15x15).
-- Nút “Giải” để chạy thuật toán tìm đường.
-- Hiển thị vật phẩm đã thu thập, thời gian còn lại, số bước đã đi.
+Euclidean: sqrt((x1 - x2)^2 + (y1 - y2)^2)
 
----
+5.4 Các bước thực hiện
 
-### 7. Kiểm thử & Demo
+Thêm điểm bắt đầu vào openSet.
 
-#### 7.1 Tình huống bình thường
-- Người chơi thu thập đủ vật phẩm và đi đến đích.
-- Đường đi được vẽ bằng màu cyan nhạt (đường A*).
+Lặp:
 
-#### 7.2 Trường hợp không có đường thoát
-- Hệ thống hiển thị cảnh báo: “Không có đường thoát!”
+Chọn ô có fScore nhỏ nhất.
 
-#### 7.3 Trường hợp chưa đủ vật phẩm
-- Khi người chơi đến đích nhưng thiếu vật phẩm, hệ thống hiển thị cảnh báo và không kết thúc game.
+Nếu là đích → trả về đường đi.
 
----
+Duyệt các ô hàng xóm:
 
-## KẾT LUẬN
+Nếu chưa được xét và là đường hợp lệ → tính g, f, cập nhật cameFrom.
 
-### 8. Đánh giá kết quả đạt được
+Khi đến được goal, dựng lại đường đi từ cameFrom.
 
-- ✅ Đã triển khai đầy đủ thuật toán A*.
-- ✅ Giao diện đẹp, có thể chạy thực tế trên trình duyệt.
-- ✅ Tương tác tốt với người dùng.
-- ✅ Hỗ trợ tự động giải và mô phỏng đường đi rõ ràng.
+6. Điều khiển và tương tác
 
-### 9. Hạn chế
+Người chơi có thể di chuyển bằng phím mũi tên hoặc W/A/S/D.
 
-- Mỗi ô có chi phí bằng nhau – chưa hỗ trợ chi phí khác nhau.
-- Mê cung chưa thay đổi được theo thời gian thực (mê cung động).
-- Giao diện chưa có tính năng thiết kế mê cung bằng tay.
+Mỗi khi đi qua vật phẩm, sẽ được thu thập và hiển thị trên thanh trạng thái.
 
-### 10. Hướng phát triển
+Khi đủ vật phẩm, người chơi có thể đi tới đích để chiến thắng.
 
-- ✅ Hỗ trợ chi phí khác nhau cho mỗi ô.
-- ✅ Hỗ trợ mê cung động.
-- ✅ So sánh heuristic khác nhau trong thời gian thực.
-- ✅ Tạo trình thiết kế mê cung trực quan.
-- ✅ Ứng dụng cho mô hình robot thật.
+Nếu chưa đủ vật phẩm, hệ thống sẽ báo lỗi và không cho kết thúc.
 
----
+7. Vẽ đường đi tối ơu
 
-## PHỤ LỤC
+Sau khi thuật toán A* tìm được đường đi:
 
-### A. Một số ảnh minh họa (nếu có thể trình chiếu)
-### B. Mã nguồn: đã chia theo từng hàm rõ ràng
-### C. Tài liệu tham khảo:
-- Wikipedia – A* algorithm
-- StackOverflow – Canvas Pathfinding
-- Giáo trình Trí tuệ nhân tạo – Đại học KHTN
+Vẽ lại mê cung.
+
+Dùng màu khác (xanh cyan) để hiển thị đường đi.
+
+In ra tọa độ đường đi nếu cần.
+
+Nếu người chơi chọn tự động, hệ thống sẽ lần lượt di chuyển qua các bước.
+
+8. Giao diện và trải nghiệm người dùng
+
+Giao diện đẹp mắt, dễ thao tác.
+
+Gradient nền và hiệu ứng màu làm nổi bật các vùng quan trọng.
+
+Responsive tốt, hỗ trợ cả trên thiết bị nhỏ.
+
+Cung c
+
