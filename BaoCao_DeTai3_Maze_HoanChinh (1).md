@@ -72,7 +72,6 @@ f(n) = g(n) + h(n)
 
 #### 5.3 Hàm heuristic sử dụng
 - **Manhattan**: Ưu tiên cho lưới ô vuông
-- **Euclidean**: Mô phỏng đường thẳng thực tế
 
 #### 5.4 Triển khai trong chương trình
 - `astar()`: Hàm chính cài đặt thuật toán A*.
